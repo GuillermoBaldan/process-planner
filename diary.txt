@@ -1,2 +1,3 @@
 20220204
-Creation of the createLinkwebV3 function that builds the web of nodes of type process
+-Creation of the createLinkwebV3 function that builds the web of nodes of type process
+-Creation of pathFinder function

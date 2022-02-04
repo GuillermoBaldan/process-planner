@@ -1,0 +1,28 @@
+[
+  {
+    "name": "mp3YoutubeDonwloader",
+    "input": ["youtube-url"],
+    "output": ["mp3-file"],
+    "descripción": "Descarga un archivo mp3 de una url de youtube"
+  },
+  {
+    "name": "mp4YoutubeDonwloader",
+    "input": ["youtube-url"],
+    "output": ["mp4-file"],
+    "descripción": "Descarga un archivo mp4 de una url de youtube"
+  },
+  {
+    "name": "article-wikipedia-extractor",
+    "input": ["wikipedia-article-url"],
+    "output": ["wikipedia-article-text"],
+    "descripción": "Extrae el texto de un artículo de wikipedia"
+  },
+  {
+    "name": "backup-personal-data",
+    "input": ["backup-hard-drive-path", "personal-folder-path"],
+    "output": ["multiple-backup-personal-file"],
+    "descripción": "Crea una copia de seguridad de todos los archivos de una carpeta"
+  },
+  {},
+  {}
+]
