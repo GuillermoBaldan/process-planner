@@ -38,3 +38,11 @@ path.forEach((node) => {
   console.log(node);
   console.log("--------------------");
 });
+console.log("---PATH using pathFinder function----");
+path = pp.pathFinder(coil, camera, linkweb);
+console.log("Path:");
+console.log(`path.length: ${path.length}`);
+path.forEach((node) => {
+  console.log(node);
+  console.log("--------------------");
+});

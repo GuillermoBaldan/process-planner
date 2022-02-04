@@ -80,29 +80,27 @@ function findOutputNode(Output, linkweb) {
 
 //Sin terminar
 function pathFinder(nodeA, nodeB, linkweb) {
-  let path = [];
+  let path1 = [];
+  let path2 = [];
   //Suponemos que nodeA es el nodo Padre y nodeB el nodo Hijo
   path = pathFinderFatherSon(nodeA, nodeB, linkweb);
+  console.log(`path: ${path} nodeA, nodeB`);
   if (path.length == 0) {
     //Suponemos que nodeA es el nodo Hijo y nodeB el nodo Padre
     path = pathFinderFatherSon(nodeB, nodeA, linkweb);
-  } else {
+  } else if (path.length == 0) {
     path = -1;
+  } else {
+    return path;
   }
-  return path;
 }
 
 function pathFinderFatherSon(nodeFather, nodeSon, linkweb) {
   let path = [];
-  console.log(
-    `f: pathFinderFatherson: nodeFather:${nodeFather.name}, childs:${nodeFather.child.length}`
-  );
+
   if (nodeFather.child.length > 0) {
     nodeFather.child.forEach((nodeChild) => {
       if (nodeChild == nodeSon) {
-        console.log(
-          `f: pathFinderFatherson: Se hace match: nodeChild.name: ${nodeChild.name}`
-        );
         path = path.concat(nodeFather);
         path = path.concat([nodeChild]);
         console.log(`path: ${path}`);
@@ -166,4 +164,5 @@ module.exports = {
   findInputNode: findInputNode,
   findOutputNode: findOutputNode,
   pathFinderFatherSon: pathFinderFatherSon,
+  pathFinder: pathFinder,
 };
