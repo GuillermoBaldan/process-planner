@@ -22,5 +22,5 @@ let ligthbulb = new ppClasses.nodeProcess(
   ["light"],
   []
 );
-
-console.log(pp.testSum(1, 5));
+console.log(ligthbulb);
+//console.log(pp.testSum(1, 5));
