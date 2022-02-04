@@ -10,18 +10,17 @@ let ligthbulb = new ppClasses.nodeProcess(
   []
 );
 
-let engine = new ppClasses.nodeProcess(
-  "engine",
+let coil = new ppClasses.nodeProcess(
+  "coil",
   ["mechanical movement"],
   ["electricity"],
   []
 );
 
-let nodeList = [engine, ligthbulb];
+let nodeList = [coil, ligthbulb];
 
 nodeList.forEach((node) => {
   pp.createLinkwebV3(linkweb, node);
 });
 
-console.log(ligthbulb);
-console.log(engine);
+console.log(pp.findInputNode("electricity", linkweb));

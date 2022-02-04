@@ -14,7 +14,7 @@ function createLinkwebV3(linkweb, nodeProcess) {
         } else if (isSon(nodeProcess, nodeWeb)) {
           //Caso-hijo: Es un nodo hijo?  Si alguna de sus entradas son una salida de otro nodo
           nodeWeb.child.push(nodeProcess);
-          console.log("Se ha creado el nodo como hijo");
+          console.log("f: createLinkwebV3: Se ha creado el nodo como hijo");
         } else if (nodeWeb.child.length > 0) {
           //vemos si Nodeweb tiene hijos para buscar hacia abajo
           createLinkwebV3(nodeWeb.child, nodeProcess);
@@ -36,7 +36,32 @@ function createLinkwebV3(linkweb, nodeProcess) {
 }
 
 //Sin terminar
-function pathProcess(input, output, linkweb) {
+function findInputNode(input, linkweb) {
+  let result;
+  linkweb.forEach((node) => {
+    console.log(`f: findInputNode: node:${node.name}, input:${node.input}`);
+
+    node.input.forEach((nodeInput) => {
+      if (input == nodeInput) {
+        console.log("Se hace match");
+        result = node;
+        return result;
+      } else if (node.child.length > 0) {
+        console.log("Se mete en el hijo de findInputNode");
+        result = findInputNode(input, node.child);
+      } else {
+        console.log("Se ha llegado a un extremo en findInputNode");
+      }
+    });
+  });
+  return result;
+}
+
+//Sin terminar
+function pathFinder(nodeInput, nodeOutput, linkweb) {}
+
+//Sin terminar
+function input_outputPathfinder(input, output, linkweb) {
   let array;
 }
 
@@ -81,4 +106,5 @@ module.exports = {
   isSon: isSon,
   isFather: isFather,
   sustitutionInArray: sustitutionInArray,
+  findInputNode: findInputNode,
 };
