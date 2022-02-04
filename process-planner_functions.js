@@ -57,6 +57,27 @@ function findInputNode(input, linkweb) {
   return result;
 }
 
+function findOutputNode(Output, linkweb) {
+  let result;
+  linkweb.forEach((node) => {
+    console.log(`f: findOutputNode: node:${node.name}, Output:${node.output}`);
+
+    node.output.forEach((nodeOutput) => {
+      if (Output == nodeOutput) {
+        console.log("f: findOutputNode: Se hace match");
+        result = node;
+        return result;
+      } else if (node.child.length > 0) {
+        console.log("Se mete en el hijo de findOutputNode");
+        result = findOutputNode(Output, node.child);
+      } else {
+        console.log("Se ha llegado a un extremo en findInputNode");
+      }
+    });
+  });
+  return result;
+}
+
 //Sin terminar
 function pathFinder(nodeInput, nodeOutput, linkweb) {}
 
@@ -107,4 +128,5 @@ module.exports = {
   isFather: isFather,
   sustitutionInArray: sustitutionInArray,
   findInputNode: findInputNode,
+  findOutputNode: findOutputNode,
 };

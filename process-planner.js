@@ -17,10 +17,14 @@ let coil = new ppClasses.nodeProcess(
   []
 );
 
-let nodeList = [coil, ligthbulb];
+let camera = new ppClasses.nodeProcess("camera", ["light"], ["image"]);
+
+let nodeList = [coil, ligthbulb, camera];
 
 nodeList.forEach((node) => {
   pp.createLinkwebV3(linkweb, node);
 });
 
 console.log(pp.findInputNode("electricity", linkweb));
+console.log(pp.findOutputNode("image", linkweb));
+console.log(linkweb);
