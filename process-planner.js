@@ -1,26 +1,27 @@
 const pp = require("./process-planner_functions");
-const ppClasses = require("../process-planner_classes");
-let engine = {
-  name: "engine",
-  entries: ["mechanical movement"],
-  exits: ["electricity"],
-};
-
-let lightbulb = {
-  name: "lightbulb",
-  entries: ["electricity"],
-  exits: ["light"],
-};
-
-let nodeList = [engine, lightbulb];
+const ppClasses = require("./process-planner_classes");
 
 let linkweb = []; //array of nodes of class nodeProcess interrelated
 
 let ligthbulb = new ppClasses.nodeProcess(
-  ligthbulb,
+  "ligthbulb",
   ["electricity"],
   ["light"],
   []
 );
+
+let engine = new ppClasses.nodeProcess(
+  "engine",
+  ["mechanical movement"],
+  ["electricity"],
+  []
+);
+
+let nodeList = [engine, ligthbulb];
+
+nodeList.forEach((node) => {
+  pp.createLinkwebV3(linkweb, node);
+});
+
 console.log(ligthbulb);
-//console.log(pp.testSum(1, 5));
+console.log(engine);

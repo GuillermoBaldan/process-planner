@@ -1,0 +1,22 @@
+{
+  "name": "process-planner",
+  "version": "0.0.1",
+  "description": "",
+  "main": "process-planner.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GuillermoBaldan/process-planner.git"
+  },
+  "author": "Guillermo Baldán López",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GuillermoBaldan/process-planner/issues"
+  },
+  "homepage": "https://github.com/GuillermoBaldan/process-planner#readme",
+  "dependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
