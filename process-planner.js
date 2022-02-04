@@ -17,9 +17,11 @@ let coil = new ppClasses.nodeProcess(
   []
 );
 
-let camera = new ppClasses.nodeProcess("camera", ["light"], ["image"]);
+let camera = new ppClasses.nodeProcess("camera", ["light"], ["image"], []);
 
 let nodeList = [coil, ligthbulb, camera];
+
+let path;
 
 nodeList.forEach((node) => {
   pp.createLinkwebV3(linkweb, node);
@@ -28,3 +30,11 @@ nodeList.forEach((node) => {
 console.log(pp.findInputNode("electricity", linkweb));
 console.log(pp.findOutputNode("image", linkweb));
 console.log(linkweb);
+path = pp.pathFinderFatherSon(coil, camera, linkweb);
+console.log("--------PATH--------");
+console.log("Path:");
+console.log(`path.length: ${path.length}`);
+path.forEach((node) => {
+  console.log(node);
+  console.log("--------------------");
+});

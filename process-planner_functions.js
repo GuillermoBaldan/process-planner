@@ -79,7 +79,43 @@ function findOutputNode(Output, linkweb) {
 }
 
 //Sin terminar
-function pathFinder(nodeInput, nodeOutput, linkweb) {}
+function pathFinder(nodeA, nodeB, linkweb) {
+  let path = [];
+  //Suponemos que nodeA es el nodo Padre y nodeB el nodo Hijo
+  path = pathFinderFatherSon(nodeA, nodeB, linkweb);
+  if (path.length == 0) {
+    //Suponemos que nodeA es el nodo Hijo y nodeB el nodo Padre
+    path = pathFinderFatherSon(nodeB, nodeA, linkweb);
+  } else {
+    path = -1;
+  }
+  return path;
+}
+
+function pathFinderFatherSon(nodeFather, nodeSon, linkweb) {
+  let path = [];
+  console.log(
+    `f: pathFinderFatherson: nodeFather:${nodeFather.name}, childs:${nodeFather.child.length}`
+  );
+  if (nodeFather.child.length > 0) {
+    nodeFather.child.forEach((nodeChild) => {
+      if (nodeChild == nodeSon) {
+        console.log(
+          `f: pathFinderFatherson: Se hace match: nodeChild.name: ${nodeChild.name}`
+        );
+        path = path.concat(nodeFather);
+        path = path.concat([nodeChild]);
+        console.log(`path: ${path}`);
+      } else if (nodeChild.child.length > 0) {
+        path = path.concat(nodeFather);
+        path = path.concat(pathFinderFatherSon(nodeChild, nodeSon, linkweb));
+      } else {
+        path = path.concat([]);
+      }
+    });
+  }
+  return path;
+}
 
 //Sin terminar
 function input_outputPathfinder(input, output, linkweb) {
@@ -129,4 +165,5 @@ module.exports = {
   sustitutionInArray: sustitutionInArray,
   findInputNode: findInputNode,
   findOutputNode: findOutputNode,
+  pathFinderFatherSon: pathFinderFatherSon,
 };
