@@ -19,10 +19,30 @@
   },
   {
     "name": "backup-personal-data",
-    "input": ["backup-hard-drive-path", "personal-folder-path"],
+    "input": [
+      "backup-hard-drive-path",
+      "personal-folder-path",
+      "personal-token"
+    ],
     "output": ["multiple-backup-personal-file"],
     "descripción": "Crea una copia de seguridad de todos los archivos de una carpeta"
   },
-  {},
-  {}
+  {
+    "name": "restore-setting-personal-computer",
+    "input": ["node-command", "personal-token"],
+    "output": ["multiple-backup-personal-file"],
+    "descripción": "Restaura un pc devolviendo una copia de seguridad"
+  },
+  {
+    "name": "what-is-my-ip",
+    "input": ["none"],
+    "output": ["ip-address-personal-computer"],
+    "descripción": "Obtiene la dirección ip del pc"
+  },
+  {
+    "name": "what-is-it",
+    "input": ["word"],
+    "output": ["text-definition-word"],
+    "descripción": "Obtiene la definición de una palabra"
+  }
 ]
